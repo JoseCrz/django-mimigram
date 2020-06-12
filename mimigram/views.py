@@ -2,6 +2,7 @@
 
 # Django
 from django.http import HttpResponse, JsonResponse
+import json
 
 # Utilities
 from datetime import datetime
@@ -15,6 +16,17 @@ def  time(request):
     return HttpResponse('Current server time: {now}'.format(now = now))
 
 def numbers(request):
-    numbers = request.GET['numbers']
-    print(numbers)
-    return HttpResponse(str(numbers))
+    """ Sorts numbers & returns a json response """
+    numbers = request.GET['numbers'].split(',')
+    numbers_list = [int(i) for i in numbers]
+    sorted_number_list = sorted(numbers_list)
+
+    data = {
+        'status': 'ok',
+        'numbers': sorted_number_list,
+        'message': 'Integers sorted'
+    }
+
+    return HttpResponse(json.dumps(data, indent=4), content_type='application/json')
+
+    
