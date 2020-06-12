@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mimigram import views
+from mimigram import views as local_views
+from posts import views as post_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello-world/', views.hello_world),
-    path('time/', views.time),
-    path('sort-numbers/', views.numbers),
-    path('entrance/<str:name>/<int:age>', views.entrance)
+    path('hello-world/', local_views.hello_world),
+    path('time/', local_views.time),
+    path('sort-numbers/', local_views.sort_numbers),
+    path('entrance/<str:name>/<int:age>', local_views.entrance),
+
+    path('posts/', post_views.list_post)
 ]
