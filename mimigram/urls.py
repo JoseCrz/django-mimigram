@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello-world/', views.hello_world),
     path('time/', views.time),
-    path('list', views.numbers)
+    path('sort-numbers/', views.numbers),
+    path('entrance/<str:name>/<int:age>', views.entrance)
 ]
