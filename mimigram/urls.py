@@ -15,13 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.http import HttpResponse
-
-def hello_world(request):
-    """ Basic Hello World """
-    return HttpResponse('Hello from Django Unchained!')
+from mimigram import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello-world', hello_world)
+    path('hello-world/', views.hello_world),
+    path('time/', views.time),
+    path('list', views.numbers)
 ]
