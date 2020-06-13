@@ -13,3 +13,20 @@ class ProfileAdmin(admin.ModelAdmin):
     search_fields = ('user__email', 'user__username', 'user__first_name', 'user__last_name', 'phone_number')
     list_filter = ('user__is_active', 'user__is_staff', 'created', 'modified')
 
+    fieldsets = (
+        ('Profile', {
+            'fields': (('user', 'picture'),),
+        }),
+        ('Extra Info', {
+            'fields': (
+                ('website', 'phone_number'),
+                ('biography')
+            )
+        }),
+        ('Meta Data', {
+            'fields': (('created', 'modified'),),
+        })
+    )
+
+    readonly_fields = ('created', 'modified')
+
