@@ -12,3 +12,8 @@ class User(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     is_admin = models.BooleanField(default=False)
+    country = models.TextField(blank=True)
+    city = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.email
