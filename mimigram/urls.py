@@ -22,13 +22,14 @@ from django.conf.urls.static import static
 # ? Local
 from mimigram import views as local_views
 from posts import views as post_views
+from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello-world/', local_views.hello_world),
-    path('time/', local_views.time),
-    path('sort-numbers/', local_views.sort_numbers),
+    path('hello-world/', local_views.hello_world, name='hello_world'),
+    path('time/', local_views.time, name='server_time'),
+    path('sort-numbers/', local_views.sort_numbers, name='sort'),
     path('entrance/<str:name>/<int:age>', local_views.entrance),
-
-    path('posts/', post_views.list_post)
+    path('posts/', post_views.list_post, name='feed'),
+    path('users/login', user_views.login_view, name='login')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
